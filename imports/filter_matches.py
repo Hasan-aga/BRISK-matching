@@ -1,5 +1,6 @@
 import numpy as np
 def filter_matches(kp1, kp2, matches, ratio = 0.75):
+    # 
     mkp1, mkp2, good= [], [], []
     for m in matches:
         if len(m) == 2 and m[0].distance < m[1].distance * ratio:
