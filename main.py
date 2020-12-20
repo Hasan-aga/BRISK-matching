@@ -42,6 +42,5 @@ if len(p1) >= 4:
 else:
     H, status = None, None
     print('%d matches found, not enough for homography estimation' % len(p1))
-print(good)
 vis = explore_match("win", img1, img2, kp1, kp2, good, status, H)
 cv.imwrite("match.jpg", vis)
