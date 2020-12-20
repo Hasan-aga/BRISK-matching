@@ -3,8 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from imports.filter_matches import filter_matches
 from imports.explore_match import explore_match
-from imports.homography import homography
-from imports.normalfilter import ratioFilter
+
 
 
 # path of image 1
@@ -15,11 +14,6 @@ path2 = "./images/img2.jpg"
 
 img1 = cv.imread(path1) 
 img2 = cv.imread(path2) 
-
-# img1 = cv.cvtColor(inIMG1, cv.COLOR_GRAY2BGR)
-# img2 = cv.cvtColor(inIMG2, cv.COLOR_GRAY2BGR)
-# cv.imshow("what", img1)
-# cv.waitKey()
 
 detector = cv.BRISK_create()
 norm = cv.NORM_HAMMING
@@ -46,4 +40,3 @@ else:
     print('%d matches found, not enough for homography estimation' % len(p1))
 vis = explore_match("win", img1, img2, kp1, kp2, good, status, H)
 cv.imwrite("match.jpg", vis)
-# 
