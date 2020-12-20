@@ -2,7 +2,7 @@ Feature-matching using BRISK
 ============================
 
 
-#### an open-source alternative to SIFT
+#### using an open-source alternative to SIFT
 
 <img src="match.jpg">
 
