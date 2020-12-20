@@ -17,20 +17,22 @@ img2 = cv.imread(path2)
 
 detector = cv.BRISK_create()
 norm = cv.NORM_HAMMING
+# finding features
 kp1, desc1 = detector.detectAndCompute(img1, None)
 kp2, desc2 = detector.detectAndCompute(img2, None)
 result1 = cv.drawKeypoints(img1, kp1, None)
 cv.imwrite("features1.jpg", result1)
 result2 = cv.drawKeypoints(img2, kp2, None)
 cv.imwrite("features2.jpg", result2)
-
+# finding matches
 FLANN_INDEX_LSH    = 6
 flann_params= dict(algorithm = FLANN_INDEX_LSH,
                                table_number = 6, # 12
                                key_size = 12,     # 20
                                multi_probe_level = 1) #2
 matcher = cv.FlannBasedMatcher(flann_params, {})
-raw_matches = matcher.knnMatch(desc1, trainDescriptors = desc2, k = 2) #2
+raw_matches = matcher.knnMatch(desc1, trainDescriptors = desc2, k = 2) 
+# finding good matches
 p1, p2, kp_pairs, good = filter_matches(kp1, kp2, raw_matches)
 if len(p1) >= 4:
     H, status = cv.findHomography(p1, p2, cv.RANSAC, 5.0)
