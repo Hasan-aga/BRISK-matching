@@ -35,12 +35,13 @@ flann_params= dict(algorithm = FLANN_INDEX_LSH,
                                multi_probe_level = 1) #2
 matcher = cv.FlannBasedMatcher(flann_params, {})
 raw_matches = matcher.knnMatch(desc1, trainDescriptors = desc2, k = 2) #2
-p1, p2, kp_pairs = filter_matches(kp1, kp2, raw_matches)
+p1, p2, kp_pairs, good = filter_matches(kp1, kp2, raw_matches)
 if len(p1) >= 4:
     H, status = cv.findHomography(p1, p2, cv.RANSAC, 5.0)
     print('%d / %d  inliers/matched' % (np.sum(status), len(status)))
 else:
     H, status = None, None
     print('%d matches found, not enough for homography estimation' % len(p1))
-vis = explore_match("win", img1, img2, kp_pairs, status, H)
+print(good)
+vis = explore_match("win", img1, img2, kp1, kp2, good, status, H)
 cv.imwrite("match.jpg", vis)
