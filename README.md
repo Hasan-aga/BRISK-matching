@@ -19,14 +19,6 @@ What I need to do can be summed up in three steps:
 3\. match the keypoints of the first image to those of the second
 
 
-Simple enough won’t you say?! lets see our options
-
-For a task this simple I didn’t want to use AI, I just started learning AI and I’m a total noob, the next best thing is an algorithm called SIFT!
-
-**SIFT**
---------
-
-scale-invariant feature transform (**SIFT**) is a feature detection algorithm in computer vision to detect and describe local features in images, it was developed by David Lowe in 1999 and both the algorithm and it’s developer are very famous in the field of CV, **But,** it is patented!
 
 **BRISK**
 ---------
